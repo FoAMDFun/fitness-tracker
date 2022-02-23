@@ -2,6 +2,7 @@
   <form
     fxLayout="column"
     fxLayoutAlign="center center"
+    fxLayoutGap="0.625rem"
     #f="ngForm"
     (ngSubmit)="onSubmit(f)"
   >
@@ -43,10 +44,23 @@
         placeholder="A születésnapod"
         [matDatepicker]="picker"
         [max]="maxDate"
+        ngModel
+        name="birthdate"
+        required
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <button type="submit" mat-raised-button color="primary">Küldés</button>
+    <mat-checkbox ngModel name="agree" color="primary"
+      >Egyetértek a feltételekkel</mat-checkbox
+    >
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      Küldés
+    </button>
   </form>
 </section>

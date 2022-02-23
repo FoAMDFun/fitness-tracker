@@ -1,1 +1,40 @@
-<p>login works!</p>
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="0.625rem"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Email..."
+        formControlName="email"
+      />
+      <mat-hint>Kérem írjon be egy létező email címet.</mat-hint>
+      <mat-error>Hibás email.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="Password..."
+        formControlName="password"
+      />
+      <mat-hint
+        >Kérem írjon be egy lealább 6 karakterből álló jelszót.</mat-hint
+      >
+      <mat-error>Hibás jelszó.</mat-error>
+    </mat-form-field>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="loginForm.invalid"
+    >
+      Küldés
+    </button>
+  </form>
+</section>
